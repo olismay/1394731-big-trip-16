@@ -1,7 +1,7 @@
 # Проект «Большое путешествие»
 
 * Студент: [Olga Ismailova](https://up.htmlacademy.ru/ecmascript/16/user/1394731).
-* Наставник: `Неизвестно`.
+* Наставник: `Mikhail Elantcev`.
 
 ---
 
