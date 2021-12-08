@@ -3,6 +3,7 @@ import { CreateTripControlsTemplate } from './view/trip-controls-view';
 import { CreateControlsFiltersTemplate } from './view/trip-controls-filter-view';
 import { CreateTripEventsTemplate } from './view/trip-events-view';
 import { CreateTripEventsItemsTemplate } from './view/trip-events-item-view';
+import { CreateFormTemplate } from './view/form-add-new-point-view';
 import { renderTemplate, RenderPosition } from './render';
 
 const tabsMainElement = document.querySelector('.page-header');
@@ -17,5 +18,6 @@ const tripEventsElement =tripEventsMainElement.querySelector('.trip-events');
 renderTemplate(tabsElement, CreateTripInfoTemplate(), RenderPosition.AFTERBEGIN);
 renderTemplate(controlsElement, CreateTripControlsTemplate(), RenderPosition.BEFOREEND);
 renderTemplate(filtersElement, CreateControlsFiltersTemplate(), RenderPosition.BEFOREEND);
+renderTemplate(tripEventsElement, CreateFormTemplate(), RenderPosition.AFTERBEGIN);
 renderTemplate(tripEventsElement, CreateTripEventsTemplate(), RenderPosition.AFTERBEGIN);
 renderTemplate(tripEventsElement, CreateTripEventsItemsTemplate(), RenderPosition.BEFOREEND);
