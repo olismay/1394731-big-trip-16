@@ -91,10 +91,10 @@ const generateDestination = () => ({
 
 const generateOffer = () => ({
   type: generateType(),
-  offer: generateOffers()
+  offer: [ generateOffers(), generateOffers() ]
 });
 
 export const generateTripPoint = () => ({
   destination: generateDestination(),
-  offers: generateOffer(),
+  offers: generateOffer()
 });

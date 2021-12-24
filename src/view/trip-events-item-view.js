@@ -1,6 +1,8 @@
 export const CreateTripEventsItemTemplate = (point) => {
   const { destination, offers } = point;
 
+  console.log(offers);
+
   return `<li class="trip-events__item">
   <div class="event">
     <time class="event__date" datetime="2019-03-18">MAR 18</time>
@@ -17,19 +19,19 @@ export const CreateTripEventsItemTemplate = (point) => {
       <p class="event__duration">01H 10M</p>
     </div>
     <p class="event__price">
-      &euro;&nbsp;<span class="event__price-value">${offers.offer.price}</span>
+      &euro;&nbsp;<span class="event__price-value">${offers.offer[0].price}</span>
     </p>
     <h4 class="visually-hidden">Offers:</h4>
     <ul class="event__selected-offers">
       <li class="event__offer">
-        <span class="event__offer-title">${offers.offer.title}</span>
+        <span class="event__offer-title">${offers.offer[0].title}</span>
         &plus;&euro;&nbsp;
-        <span class="event__offer-price">${offers.offer.price}</span>
+        <span class="event__offer-price">${offers.offer[0].price}</span>
       </li>
       <li class="event__offer">
-        <span class="event__offer-title">${offers.offer.title}</span>
+        <span class="event__offer-title">${offers.offer[1].title}</span>
         &plus;&euro;&nbsp;
-        <span class="event__offer-price">${offers.offer.price}</span>
+        <span class="event__offer-price">${offers.offer[1].price}</span>
       </li>
     </ul>
     <button class="event__favorite-btn" type="button">
