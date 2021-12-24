@@ -5,7 +5,12 @@ import { CreateTripEventsTemplate } from './view/trip-events-view';
 import { CreateTripEventsItemTemplate } from './view/trip-events-item-view';
 import { CreateFormTemplate } from './view/form-add-new-point-view';
 import { CreateListTemplate } from './view/trip-events-list-view';
+import { generateTripPoint } from './mocks/trip-events-point';
 import { renderTemplate, RenderPosition } from './render';
+
+const TRIP_POINTS_COUNT = 20;
+const points = Array.from({ length: TRIP_POINTS_COUNT}, generateTripPoint);
+console.log(points);
 
 const tabsMainElement = document.querySelector('.page-header');
 const tabsElement = tabsMainElement.querySelector('.trip-main');

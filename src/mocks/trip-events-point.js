@@ -53,25 +53,17 @@ const generateDescription = () => {
   return descriptions[randomIndex];
 };
 
-const generateSrc = () => {
-  return `http://picsum.photos/248/152?r=${Math.random()}`;
-};
+const generateSrc = () => `http://picsum.photos/248/152?r=${Math.random()}`;
 
-const generatePictires = () => {
-  return [
-    {
-      src: generateSrc()
-    }
-  ]
-};
 
-const generateId = () => {
-  return Math.floor(Math.random());
-}
+const generatePictires = () => (
+  [{
+    src: generateSrc(),
+  }]);
 
-const generatePrice = (min, max) => {
-  return Math.floor(Math.random() * (max - min)) + min;
-};
+
+const generateRandomInteger = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+
 
 const generateTitle = () => {
   const titles = [
@@ -83,34 +75,26 @@ const generateTitle = () => {
 
   const randomIndex = Math.floor(Math.random() * titles.length);
   return titles[randomIndex];
-}
-
-const generateOffers = () => {
-  return {
-    id: generateId(),
-    title: generateTitle(),
-    price: generatePrice(10, 250),
-  }
-}
-
-const generateDestination = () => {
-  return {
-    description: generateDescription(),
-    name: generateCity(),
-    pictures: generatePictires()
-  }
 };
 
-const generateOffer = () => {
-  return {
-    type: generateType(),
-    offer: generateOffers()
-  }
-}
+const generateOffers = () => ({
+  id: generateRandomInteger(1, 20),
+  title: generateTitle(),
+  price: generateRandomInteger(10, 250),
+});
 
-export const generateTripPoint = () => {
-  return {
-    destination: generateDestination(),
-    offer: generateOffer(),
-  }
-};
+const generateDestination = () => ({
+  description: generateDescription(),
+  name: generateCity(),
+  pictures: generatePictires()
+});
+
+const generateOffer = () => ({
+  type: generateType(),
+  offer: generateOffers()
+});
+
+export const generateTripPoint = () => ({
+  destination: generateDestination(),
+  offer: generateOffer(),
+});
