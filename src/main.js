@@ -15,7 +15,6 @@ const filtersElement = tabsMainElement.querySelector('.trip-controls__filters');
 const tripEventsMainElement = document.querySelector('.page-body__page-main');
 const tripEventsElement = tripEventsMainElement.querySelector('.trip-events');
 
-
 renderTemplate(tabsElement, CreateTripInfoTemplate(), RenderPosition.AFTERBEGIN);
 renderTemplate(controlsElement, CreateTripControlsTemplate(), RenderPosition.BEFOREEND);
 renderTemplate(filtersElement, CreateControlsFiltersTemplate(), RenderPosition.BEFOREEND);
