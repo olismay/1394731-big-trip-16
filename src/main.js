@@ -10,7 +10,6 @@ import { renderTemplate, RenderPosition } from './render';
 
 const TRIP_POINTS_COUNT = 20;
 const points = Array.from({ length: TRIP_POINTS_COUNT}, generateTripPoint);
-console.log(points);
 
 const tabsMainElement = document.querySelector('.page-header');
 const tabsElement = tabsMainElement.querySelector('.trip-main');
@@ -28,6 +27,8 @@ renderTemplate(tripEventsElement, CreateListTemplate(), RenderPosition.BEFOREEND
 
 const tripList = document.querySelector('.trip-events__list');
 renderTemplate(tripList, CreateFormTemplate(), RenderPosition.AFTERBEGIN);
-renderTemplate(tripList, CreateTripEventsItemTemplate(), RenderPosition.BEFOREEND);
-renderTemplate(tripList, CreateTripEventsItemTemplate(), RenderPosition.BEFOREEND);
-renderTemplate(tripList, CreateTripEventsItemTemplate(), RenderPosition.BEFOREEND);
+
+for (let i = 1; i < points.length; i++) {
+  renderTemplate(tripList, CreateTripEventsItemTemplate(points[i]), RenderPosition.BEFOREEND);
+}
+

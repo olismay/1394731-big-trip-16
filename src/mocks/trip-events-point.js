@@ -96,5 +96,5 @@ const generateOffer = () => ({
 
 export const generateTripPoint = () => ({
   destination: generateDestination(),
-  offer: generateOffer(),
+  offers: generateOffer(),
 });
