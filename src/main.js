@@ -26,7 +26,10 @@ renderTemplate(tripEventsElement, CreateTripEventsTemplate(), RenderPosition.AFT
 renderTemplate(tripEventsElement, CreateListTemplate(), RenderPosition.BEFOREEND);
 
 const tripList = document.querySelector('.trip-events__list');
-renderTemplate(tripList, CreateFormTemplate(), RenderPosition.AFTERBEGIN);
+
+for (let i = 1; i < 2; i++) {
+  renderTemplate(tripList, CreateFormTemplate(points[i]), RenderPosition.AFTERBEGIN);
+}
 
 for (let i = 1; i < points.length; i++) {
   renderTemplate(tripList, CreateTripEventsItemTemplate(points[i]), RenderPosition.BEFOREEND);
