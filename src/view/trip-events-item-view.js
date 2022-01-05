@@ -17,20 +17,15 @@ export const CreateTripEventsItemTemplate = (point) => {
       <p class="event__duration">01H 10M</p>
     </div>
     <p class="event__price">
-      &euro;&nbsp;<span class="event__price-value">${offers.offer[0].price}</span>
+      &euro;&nbsp;<span class="event__price-value">${offers.price}</span>
     </p>
     <h4 class="visually-hidden">Offers:</h4>
     <ul class="event__selected-offers">
-      <li class="event__offer">
-        <span class="event__offer-title">${offers.offer[0].title}</span>
-        &plus;&euro;&nbsp;
-        <span class="event__offer-price">${offers.offer[0].price}</span>
-      </li>
-      <li class="event__offer">
-        <span class="event__offer-title">${offers.offer[1].title}</span>
-        &plus;&euro;&nbsp;
-        <span class="event__offer-price">${offers.offer[1].price}</span>
-      </li>
+    ${offers.offers.map((item) => `<li class="event__offer">
+    <span class="event__offer-title">${item.title}</span>
+    &plus;&euro;&nbsp;
+    <span class="event__offer-price">${item.price}</span>
+    </li>`)}
     </ul>
     <button class="event__favorite-btn" type="button">
       <span class="visually-hidden">Add to favorite</span>

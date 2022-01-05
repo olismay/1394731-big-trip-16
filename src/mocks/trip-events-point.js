@@ -1,3 +1,5 @@
+const generateRandomInteger = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+
 const generateType = () => {
   const types = [
     'Taxi',
@@ -49,8 +51,10 @@ const generateDescription = () => {
     'In rutrum ac purus sit amet tempus.'
   ];
 
-  const randomIndex = Math.floor(Math.random() * descriptions.length);
-  return descriptions[randomIndex];
+  const sentencesCount = generateRandomInteger(1,5);
+  descriptions.length = sentencesCount;
+
+  return descriptions;
 };
 
 const generateSrc = () => `http://picsum.photos/248/152?r=${Math.random()}`;
@@ -60,9 +64,6 @@ const generatePictires = () => (
   [{
     src: generateSrc(),
   }]);
-
-
-const generateRandomInteger = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
 
 const generateTitle = () => {
@@ -77,24 +78,39 @@ const generateTitle = () => {
   return titles[randomIndex];
 };
 
-const generateOffers = () => ({
-  id: generateRandomInteger(1, 20),
-  title: generateTitle(),
-  price: generateRandomInteger(10, 250),
-});
+
+const generateOffer = () => {
+
+  const offer = {
+    id: generateRandomInteger(1, 20),
+    title: generateTitle(),
+    price: generateRandomInteger(10, 250),
+  };
+
+  return offer;
+};
+
+
+const createArrLength = (val) => {
+  const offers = [];
+  offers.length = generateRandomInteger(1, 5);
+  return offers.fill(val);
+};
 
 const generateDestination = () => ({
-  description: generateDescription(),
+  description: generateDescription(1, 5),
   name: generateCity(),
   pictures: generatePictires()
 });
 
-const generateOffer = () => ({
-  type: generateType(),
-  offer: [ generateOffers(), generateOffers() ]
-});
+
+const generateOfferList = () => (
+  { type: generateType(),
+    offers: createArrLength(generateOffer()),
+  });
+
 
 export const generateTripPoint = () => ({
   destination: generateDestination(),
-  offers: generateOffer()
+  offers: generateOfferList(),
 });
