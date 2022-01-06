@@ -1,6 +1,6 @@
 export const CreateFormTemplate = (point) => {
   const { destination, offers } = point;
-  console.log(offers);
+
   return `<li class="trip-events__item">
   <form class="event event--edit" action="#" method="post">
   <header class="event__header">
