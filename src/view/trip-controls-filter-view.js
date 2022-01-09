@@ -1,4 +1,6 @@
-export const CreateControlsFiltersTemplate = () => (
+import {createElement} from '../render.js';
+
+const CreateControlsFiltersTemplate = () => (
   `<form class="trip-filters" action="#" method="get">
   <div class="trip-filters__filter">
     <input id="filter-everything" class="trip-filters__filter-input  visually-hidden" type="radio" name="trip-filter" value="everything" checked>
@@ -18,3 +20,24 @@ export const CreateControlsFiltersTemplate = () => (
   <button class="visually-hidden" type="submit">Accept filter</button>
 </form>`
 );
+
+
+export default class ControlsFilters {
+  #element = null;
+
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
+    }
+
+    return this.#element;
+  }
+
+  get template() {
+    return CreateControlsFiltersTemplate();
+  }
+
+  removeElement() {
+    this.#element = null;
+  }
+}

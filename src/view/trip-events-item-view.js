@@ -1,4 +1,6 @@
-export const CreateTripEventsItemTemplate = (point) => {
+import {createElement} from '../render.js';
+
+const CreateTripEventsItemTemplate = (point) => {
   const { destination, offers } = point;
 
   return `<li class="trip-events__item">
@@ -39,3 +41,29 @@ export const CreateTripEventsItemTemplate = (point) => {
   </div>
 </li>`;
 } ;
+
+
+export default class TripEvents {
+  #element = null;
+  #point = null;
+
+  constructor(point) {
+    this.#point = point;
+  }
+
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
+    }
+
+    return this.#element;
+  }
+
+  get template() {
+    return CreateTripEventsItemTemplate(this.#point);
+  }
+
+  removeElement() {
+    this.#element = null;
+  }
+}

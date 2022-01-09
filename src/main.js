@@ -1,12 +1,12 @@
-import { CreateTripInfoTemplate } from './view/trip-info-view';
-import { CreateTripControlsTemplate } from './view/trip-controls-view';
-import { CreateControlsFiltersTemplate } from './view/trip-controls-filter-view';
-import { CreateTripEventsTemplate } from './view/trip-events-view';
-import { CreateTripEventsItemTemplate } from './view/trip-events-item-view';
-import { CreateFormTemplate } from './view/form-add-new-point-view';
-import { CreateListTemplate } from './view/trip-events-list-view';
+import TripInfo from './view/trip-info-view';
+import TripControls from './view/trip-controls-view';
+import ControlsFilters from './view/trip-controls-filter-view';
+import TripEvents from './view/trip-events-view';
+import TripEventsItem from './view/trip-events-item-view';
+import Form from './view/form-add-new-point-view';
+import List from './view/trip-events-list-view';
 import { generateTripPoint } from './mocks/trip-events-point';
-import { renderTemplate, RenderPosition } from './render';
+import { render, RenderPosition } from './render';
 
 const TRIP_POINTS_COUNT = 20;
 const points = Array.from({ length: TRIP_POINTS_COUNT}, generateTripPoint);
@@ -19,19 +19,20 @@ const filtersElement = tabsMainElement.querySelector('.trip-controls__filters');
 const tripEventsMainElement = document.querySelector('.page-body__page-main');
 const tripEventsElement = tripEventsMainElement.querySelector('.trip-events');
 
-renderTemplate(tabsElement, CreateTripInfoTemplate(), RenderPosition.AFTERBEGIN);
-renderTemplate(controlsElement, CreateTripControlsTemplate(), RenderPosition.BEFOREEND);
-renderTemplate(filtersElement, CreateControlsFiltersTemplate(), RenderPosition.BEFOREEND);
-renderTemplate(tripEventsElement, CreateTripEventsTemplate(), RenderPosition.AFTERBEGIN);
-renderTemplate(tripEventsElement, CreateListTemplate(), RenderPosition.BEFOREEND);
+
+render(tabsElement, new TripInfo(), RenderPosition.AFTERBEGIN);
+render(controlsElement, new TripControls(), RenderPosition.BEFOREEND);
+render(filtersElement, new ControlsFilters(), RenderPosition.BEFOREEND);
+render(tripEventsElement, new TripEvents(), RenderPosition.AFTERBEGIN);
+render(tripEventsElement, new List(), RenderPosition.BEFOREEND);
 
 const tripList = document.querySelector('.trip-events__list');
-
+debugger;
 for (let i = 1; i < 2; i++) {
-  renderTemplate(tripList, CreateFormTemplate(points[i]), RenderPosition.AFTERBEGIN);
+  render(tripList, new Form(points[i]), RenderPosition.AFTERBEGIN);
 }
 
 for (let i = 1; i < points.length; i++) {
-  renderTemplate(tripList, CreateTripEventsItemTemplate(points[i]), RenderPosition.BEFOREEND);
+  render(tripList, new TripEventsItem(points[i]), RenderPosition.BEFOREEND);
 }
 

@@ -1,4 +1,6 @@
-export const CreateFormTemplate = (point) => {
+import {createElement} from '../render.js';
+
+const CreateFormTemplate = (point) => {
   const { destination, offers } = point;
 
   return `<li class="trip-events__item">
@@ -124,3 +126,29 @@ export const CreateFormTemplate = (point) => {
 </form>
 </li>`;
 };
+
+
+export default class Form {
+  #element = null;
+  #point = null;
+
+  constructor(point) {
+    this.#point = point;
+  }
+
+  get element() {
+    if (!this.#element) {
+      this.#element = createElement(this.template);
+    }
+
+    return this.#element;
+  }
+
+  get template() {
+    return CreateFormTemplate(this.#point);
+  }
+
+  removeElement() {
+    this.#element = null;
+  }
+}
