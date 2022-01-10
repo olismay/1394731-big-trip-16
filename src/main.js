@@ -27,7 +27,7 @@ render(tripEventsElement, new TripEvents(), RenderPosition.AFTERBEGIN);
 render(tripEventsElement, new List(), RenderPosition.BEFOREEND);
 
 const tripList = document.querySelector('.trip-events__list');
-debugger;
+
 for (let i = 1; i < 2; i++) {
   render(tripList, new Form(points[i]), RenderPosition.AFTERBEGIN);
 }
