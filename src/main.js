@@ -32,7 +32,21 @@ for (let i = 1; i < 2; i++) {
   render(tripList, new Form(points[i]), RenderPosition.AFTERBEGIN);
 }
 
-for (let i = 1; i < points.length; i++) {
+for (let i = 1; i < 2; i++) {
   render(tripList, new TripEventsItem(points[i]), RenderPosition.BEFOREEND);
 }
 
+
+const button = document.querySelector('.event__rollup-btn');
+
+const form = document.querySelector('.event--edit');
+
+
+form.addEventListener('submit', () => {
+  form.replaceChild(form, button);
+});
+
+
+button.addEventListener('click', () => {
+  form.replaceChild(button, form);
+});
