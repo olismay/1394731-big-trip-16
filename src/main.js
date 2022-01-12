@@ -28,25 +28,23 @@ render(tripEventsElement, new List(), RenderPosition.BEFOREEND);
 
 const tripList = document.querySelector('.trip-events__list');
 
-for (let i = 1; i < 2; i++) {
-  render(tripList, new Form(points[i]), RenderPosition.AFTERBEGIN);
-}
 
 for (let i = 1; i < 2; i++) {
-  render(tripList, new TripEventsItem(points[i]), RenderPosition.BEFOREEND);
+  const formComponent = new Form(points[i]);
+  const pointComponent = new TripEventsItem(points[i]);
+
+  render(tripList, pointComponent, RenderPosition.AFTERBEGIN);
+
+  const button = pointComponent.element.querySelector('.event__rollup-btn');
+
+  button.addEventListener('click', () => {
+  tripList.replaceChild(formComponent.element, pointComponent.element);
+  });
+
+  const form = formComponent.element.querySelector('.event--edit');
+
+  form.addEventListener('submit', () => {
+    tripList.replaceChild(pointComponent.element, formComponent.element);
+  });
+
 }
-
-
-const button = document.querySelector('.event__rollup-btn');
-
-const form = document.querySelector('.event--edit');
-
-
-form.addEventListener('submit', () => {
-  form.replaceChild(form, button);
-});
-
-
-button.addEventListener('click', () => {
-  form.replaceChild(button, form);
-});
