@@ -38,7 +38,7 @@ for (let i = 1; i < 2; i++) {
   const button = pointComponent.element.querySelector('.event__rollup-btn');
 
   button.addEventListener('click', () => {
-  tripList.replaceChild(formComponent.element, pointComponent.element);
+    tripList.replaceChild(formComponent.element, pointComponent.element);
   });
 
   const form = formComponent.element.querySelector('.event--edit');
